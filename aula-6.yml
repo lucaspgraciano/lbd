@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-lbd-6
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: default_schema
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin-lbd-6
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    links:
+      - mysql
+    ports:
+      - 8080:80

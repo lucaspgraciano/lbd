@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres-lbd-9
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-lbd-9
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.com
+      PGADMIN_DEFAULT_PASSWORD: pgadmin
+    ports:
+      - 8080:80
+    links:
+      - postgres
